@@ -1,0 +1,35 @@
+version: '2.4'
+services:
+  web:
+    image: nicopaez/jobvacancy-ruby:1.3.0
+    networks:
+      - internal
+      - public
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: "3000"
+      RACK_ENV: "production"
+    entrypoint: "/bin/sh -c 'DATABASE_URL=`cat /run/secrets/db_url` /jobvacancy/start_app.sh'"
+    depends_on:
+      - db
+    secrets:
+      - db_url
+  db:
+    image: postgres:14.4-alpine
+    environment:
+      POSTGRES_PASSWORD_FILE: run/secrets/db_password
+    secrets:
+      - db_password
+    networks:
+      - internal
+
+secrets:
+  db_password:
+    file: ./db_password.txt
+  db_url:
+    file: ./db_url.txt
+
+networks:
+  public:
+  internal:

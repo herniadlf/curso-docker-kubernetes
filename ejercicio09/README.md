@@ -1,0 +1,3 @@
+- Dejo los secrets en archivos y los subo para que quede más claro como lo separé, pero entiendo que es mejor práctica crearlos como "externals".
+- No estaba especificado pero como la DATABASE_URL del servicio web tiene la password también, lo llevé a un secret, pero me complicó la ejecución. Tuve que meterme a la imagen de jobvacancy e implementar el entrypoint para poder levantar la variable de ambiente desde el secret. No quedó muy bonito.
+- No me quedó del todo clara la diferencia de la spec de compose V2, asi que no sé si lo hice bien. No puedo instalar en mi máquina Docker Desktop, tengo instalado colima, eso hizo que no me funcione el `docker compose` sino tener que usar `docker-compose` con la versión "Docker Compose version 2.18.1". 
