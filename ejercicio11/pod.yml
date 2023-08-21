@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: telegrambot
+  name: telegrambot
+spec:
+  containers:
+  - env:
+    - name: TELEGRAM_TOKEN
+      value: A_COMPLETAR
+    image: nicopaez/telegrambot:0.0.7
+    name: telegrambot
