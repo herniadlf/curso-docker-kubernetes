@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jobvacancy
+  labels:
+    app: jobvacancy
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
+spec:
+  selector:
+    app: jobvacancy
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 3000
